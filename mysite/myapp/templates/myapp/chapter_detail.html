@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ chapter.title }}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
 </head>
-<body>
-    <h1>{{ chapter.title }}</h1>
-    <p>Глава {{ chapter.number }}</p>
-    <iframe src="{{ chapter.pdf_file.url }}" width="100%" height="600px"></iframe>
-    <p><a href="{% url 'indexManga' chapter.manga.id %}">Назад до манги</a></p>
+<body class="bg-gray-950 text-white font-sans p-5">
+    <h1 class="text-yellow-400 text-3xl mb-4">{{ chapter.title }}</h1>
+    <p class="mb-4">Глава {{ chapter.number }}</p>
+    <iframe src="{{ chapter.pdf_file.url }}" width="100%" height="600px" class="mb-4"></iframe>
+    <p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' chapter.manga.id %}">Назад до манги</a></p>
 </body>
 </html>

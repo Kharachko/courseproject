@@ -1,15 +1,17 @@
-/* style.css */
+/* style2.css */
+/* Tailwind CSS core styles */
+@import 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css';
 
-/* Загальні стилі для всього сайту */
+/* Додаткові кастомні стилі */
 body {
-    background-color: #222; /* Темний фон */
-    color: #fff; /* Колір тексту */
+    background-color: #1a202c; /* Темно-сірий фон (Tailwind: bg-gray-900) */
+    color: #f7fafc; /* Світло-сірий текст (Tailwind: text-gray-100) */
     font-family: Arial, sans-serif; /* Шрифт */
     padding: 20px; /* Відступи від країв сторінки */
 }
 
 h1 {
-    color: #ffcc00; /* Колір заголовку */
+    color: #ecc94b; /* Жовтий заголовок (Tailwind: text-yellow-400) */
 }
 
 ul {
@@ -18,18 +20,18 @@ ul {
 }
 
 li {
-    background: #333; /* Темно-сірий фон для елементів списку */
+    background: #2d3748; /* Темно-сірий фон для елементів списку (Tailwind: bg-gray-800) */
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px; /* Закруглені кути */
 }
 
 li:hover {
-    background: #444; /* Зміна кольору фону при наведенні */
+    background: #4a5568; /* Темно-сірий фон при наведенні (Tailwind: bg-gray-700) */
 }
 
 a {
-    color: #ffcc00; /* Колір посилань */
+    color: #ecc94b; /* Жовтий колір посилань (Tailwind: text-yellow-400) */
     text-decoration: none; /* Відсутність підкреслення у посилань */
 }
 

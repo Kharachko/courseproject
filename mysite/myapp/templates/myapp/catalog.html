@@ -3,11 +3,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Каталог</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+    <title>Каталог Манги</title>
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
 </head>
-<body>
-    <h1>Каталог</h1>
-    <p>Зміст каталогу...</p>
+<body class="bg-gray-950 text-white font-sans p-5">
+    <h1 class="text-yellow-400 text-3xl mb-4">Каталог Манги</h1>
+    <ul class="list-none p-0">
+        {% for item in items %}
+            <li class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
+                <a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' item.id %}">{{ item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
