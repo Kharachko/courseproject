@@ -10,13 +10,13 @@
     <nav class="bg-gray-800 shadow-lg p-4 mb-6">
         <div class="container mx-auto flex items-center justify-between">
             <div>
-                <a href="{% url 'myapp:index' %}">
+                <a href="{% url 'index' %}">
                     <img class="h-8 w-8" src="{% static 'myapp/images/logo.jpg' %}" alt="Logo">
                 </a>
             </div>
             <div class="ml-6">
-                <a class="nav-link" href="{% url 'myapp:index' %}">Головна</a>
-                <a class="nav-link ml-4" href="{% url 'users:profile' %}">Про користувача</a>
+                <a class="nav-link" href="{% url 'index' %}">Головна</a>
+                <a class="nav-link ml-4" href="{% url 'catalog' %}">Про користувача</a>
             </div>
         </div>
     </nav>

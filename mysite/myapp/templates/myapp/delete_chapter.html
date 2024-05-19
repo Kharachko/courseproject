@@ -8,6 +8,6 @@
         {% csrf_token %}
         <button class="block bg-red-600 text-white p-3 mt-4" type="submit">Delete</button>
     </form>
-    <p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' chapter.id %}">Назад до глави</a></p>
+    <p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:chapter_detail' chapter.id %}">Назад до глави</a></p>
 </div>
 {% endblock %}

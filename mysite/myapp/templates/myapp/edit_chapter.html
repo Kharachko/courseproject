@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="ml-10 mt-10">
-    <h1 class="text-3xl font-bold mb-6">Edit Manga</h1>
+    <h1 class="text-3xl font-bold mb-6">Edit Chapter</h1>
     <form class="w-full max-w-md shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-4">
@@ -10,28 +10,16 @@
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" id="title" placeholder="Title..." value="{{ form.title.value }}">
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="author">Author</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="author" id="author" placeholder="Author..." value="{{ form.author.value }}">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="number">Number</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="number" id="number" placeholder="Number..." value="{{ form.number.value }}">
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">Description</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="description" placeholder="Description...">{{ form.description.value }}</textarea>
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="genres">Genres</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="genres" id="genres" placeholder="Genres..." value="{{ form.genres.value }}">
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="ongoing">Ongoing</label>
-            <input type="checkbox" name="ongoing" id="ongoing" {% if form.ongoing.value %}checked{% endif %}>
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="image_file">Image File</label>
-            <input class="block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" name="image_file" id="image_file">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="pdf_file">PDF File</label>
+            <input class="block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" name="pdf_file" id="pdf_file">
         </div>
         <div class="flex items-center justify-between">
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Save Changes</button>
-            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'index' %}">Back to Catalog</a>
+            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:chapter_detail' chapter.id %}">Назад до глави</a>
         </div>
     </form>
 </div>

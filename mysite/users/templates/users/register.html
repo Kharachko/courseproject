@@ -1,0 +1,43 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-md mx-auto bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <h1 class="text-3xl font-bold mb-6 text-yellow-400">Register</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label class="block text-gray-300 text-sm font-bold mb-2" for="id_username">Username</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <p class="text-red-500 text-xs italic">{{ form.username.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-300 text-sm font-bold mb-2" for="id_email">Email</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <p class="text-red-500 text-xs italic">{{ form.email.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-300 text-sm font-bold mb-2" for="id_password1">Password</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <p class="text-red-500 text-xs italic">{{ form.password1.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-300 text-sm font-bold mb-2" for="id_password2">Confirm Password</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <p class="text-red-500 text-xs italic">{{ form.password2.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="flex items-center justify-between mt-4">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Register</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -7,7 +7,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {% for item in items %}
         <div class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
-            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' item.id %}">
+            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:indexManga' item.id %}">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <!-- Display the image if it exists, otherwise display a placeholder -->
@@ -26,6 +26,6 @@
     {% endfor %}
 </div>
 <div class="mt-4">
-    <a class="text-green-400 no-underline hover:underline" href="{% url 'add_manga' %}">Додати Мангу</a>
+    <a class="text-green-400 no-underline hover:underline" href="{% url 'myapp:add_manga' %}">Додати Мангу</a>
 </div>
 {% endblock %}

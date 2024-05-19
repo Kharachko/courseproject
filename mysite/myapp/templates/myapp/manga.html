@@ -17,14 +17,14 @@
 <ul class="list-none p-0">
     {% for chapter in chapters %}
         <li class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
-            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' chapter.id %}">Chapter {{ chapter.number }}: {{ chapter.title }}</a>
+            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:chapter_detail' chapter.id %}">Chapter {{ chapter.number }}: {{ chapter.title }}</a>
         </li>
     {% endfor %}
 </ul>
 <div class="flex justify-between mt-4">
-    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'addchapter' manga.id %}">Додати Главу</a>
-    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'editmanga' manga.id %}">Редагувати Мангу</a>
-    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'deletemanga' manga.id %}">Видалити Мангу</a>
+    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:addchapter' manga.id %}">Додати Главу</a>
+    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:editmanga' manga.id %}">Редагувати Мангу</a>
+    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:deletemanga' manga.id %}">Видалити Мангу</a>
 </div>
-<p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'index' %}">Назад до каталогу</a></p>
+<p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:index' %}">Назад до каталогу</a></p>
 {% endblock %}

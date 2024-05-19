@@ -7,15 +7,15 @@
         {% csrf_token %}
         <div class="mb-4">
             <label class="block text-gray-700 text-md font-bold mb-2" for="number">Chapter Number</label>
-            <input class="shadow appearance-none border rounded py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="number" id="number" placeholder="Chapter Number...">
+            <input class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="number" name="number" id="number" placeholder="Chapter Number...">
             
-            <label class="block text-gray-700 text-md font-bold mb-2" for="title">Chapter Title</label>
-            <input class="shadow appearance-none border rounded py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" id="title" placeholder="Chapter Title...">
+            <label class="block text-gray-700 text-md font-bold mb-2 mt-2" for="title">Chapter Title</label>
+            <input class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="title" id="title" placeholder="Chapter Title...">
             
-            <label class="block text-gray-700 text-md font-bold mb-2" for="pdf_file">Upload PDF</label>
-            <input class="block mt-1 mb-3" type="file" accept=".pdf" name="pdf_file" id="pdf_file">
+            <label class="block text-gray-700 text-md font-bold mb-2 mt-2" for="pdf_file">Upload PDF</label>
+            <input class="block mt-4" type="file" accept=".pdf" name="pdf_file" id="pdf_file">
             
-            <button class="block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Add Chapter</button>
+            <button class="block bg-green-600 text-white p-3 mt-4" type="submit">Add Chapter</button>
         </div>
     </form>
 </div>
