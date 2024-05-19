@@ -8,4 +8,5 @@ urlpatterns = [
     path('manga/<int:manga_id>/', views.indexManga, name='indexManga'),
     path('catalog/', views.catalog, name='catalog'),
     path('chapter/<int:id>/', views.chapter_detail, name='chapter_detail'),  # Подання для перегляду окремих глав
+    #path('user_profile/', views.user_profile, name='user_profile'),  # Додано посилання на сторінку профілю користувача
 ]

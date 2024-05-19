@@ -26,3 +26,15 @@ def chapter_detail(request, id):
         'chapter': chapter
     }
     return render(request, 'myapp/chapter_detail.html', context)
+
+# def user_profile(request, username):
+#     user = get_object_or_404(User, username=username)
+#     user_data = {
+#         'username': user.username,
+#         'email': user.email,
+#         'date_joined': user.date_joined,
+#     }
+#     context = {
+#         'user_data': user_data
+#     }
+#     return render(request, 'myapp/user_profile.html', context)

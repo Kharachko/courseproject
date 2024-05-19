@@ -38,3 +38,15 @@ a {
 a:hover {
     text-decoration: underline; /* Підкреслення при наведенні */
 }
+  /* Стилі для підвісної навігації */
+  .nav-link {
+    color: #f6e05e; /* Колір тексту */
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Відступи */
+    border-radius: 0.25rem; /* Закругленість кутів */
+    transition: background-color 0.3s ease; /* Плавний перехід кольору фону */
+}
+
+.nav-link:hover {
+    background-color: #4a5568; /* Колір фону при наведенні */
+}

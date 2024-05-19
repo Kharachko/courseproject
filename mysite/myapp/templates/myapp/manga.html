@@ -1,23 +1,25 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ manga.title }}</title>
-    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
-</head>
-<body class="bg-gray-950 text-white font-sans p-5">
-    <h1 class="text-yellow-400 text-3xl mb-4">{{ manga.title }}</h1>
-    <p class="mb-4">Автор: {{ manga.author }}</p>
-    <p class="mb-4">{{ manga.description }}</p>
-    <h2 class="text-2xl mb-4">Глави</h2>
-    <ul class="list-none p-0">
-        {% for chapter in chapters %}
-            <li class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
-                <a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' chapter.id %}">Chapter {{ chapter.number }}: {{ chapter.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'index' %}">Назад до каталогу</a></p>
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block title %}{{ manga.title }}{% endblock %}
+
+{% block content %}
+<h1 class="text-yellow-400 text-3xl mb-4">{{ manga.title }}</h1>
+<div class="flex mb-4">
+    <div class="mr-4">
+        <img class="h-48 w-32 rounded-lg object-cover" src="{{ manga.photo_url }}" alt="{{ manga.title }}">
+    </div>
+    <div>
+        <p>Автор: {{ manga.author }}</p>
+        <p>{{ manga.description }}</p>
+    </div>
+</div>
+<h2 class="text-yellow-400 text-2xl mb-2">Глави</h2>
+<ul class="list-none p-0">
+    {% for chapter in chapters %}
+        <li class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
+            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' chapter.id %}">Chapter {{ chapter.number }}: {{ chapter.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'index' %}">Назад до каталогу</a></p>
+{% endblock %}
