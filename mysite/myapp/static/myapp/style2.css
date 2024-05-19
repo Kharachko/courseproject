@@ -1,0 +1,38 @@
+/* style.css */
+
+/* Загальні стилі для всього сайту */
+body {
+    background-color: #222; /* Темний фон */
+    color: #fff; /* Колір тексту */
+    font-family: Arial, sans-serif; /* Шрифт */
+    padding: 20px; /* Відступи від країв сторінки */
+}
+
+h1 {
+    color: #ffcc00; /* Колір заголовку */
+}
+
+ul {
+    list-style-type: none; /* Без маркерів списку */
+    padding: 0;
+}
+
+li {
+    background: #333; /* Темно-сірий фон для елементів списку */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px; /* Закруглені кути */
+}
+
+li:hover {
+    background: #444; /* Зміна кольору фону при наведенні */
+}
+
+a {
+    color: #ffcc00; /* Колір посилань */
+    text-decoration: none; /* Відсутність підкреслення у посилань */
+}
+
+a:hover {
+    text-decoration: underline; /* Підкреслення при наведенні */
+}

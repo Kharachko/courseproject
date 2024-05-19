@@ -1,11 +1,11 @@
 from django.urls import path
-from myapp.views import index,catalog,indexManga
+from . import views
 
 urlpatterns = [
-    #http://127.0.0.1:8000/myapp/hello
-    path('hello', index),
-    path('hello/<int:manga_id>', indexManga),
-    #http://127.0.0.1:8000/myapp/catalog
-    path('catalog', catalog),
-    
+    path('', views.index, name='index'),
+    path('hello/', views.index, name='hello'),
+    path('hello/<int:manga_id>/', views.indexManga, name='helloManga'),
+    path('manga/<int:manga_id>/', views.indexManga, name='indexManga'),
+    path('catalog/', views.catalog, name='catalog'),
+    path('chapter/<int:id>/', views.chapter_detail, name='chapter_detail'),  # Подання для перегляду окремих глав
 ]

@@ -1,44 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Головна</title>
-    <style>
-        body {
-            background-color: #222; /* Темний фон */
-            color: #fff; /* Колір тексту */
-            font-family: Arial, sans-serif; /* Шрифт */
-            padding: 20px; /* Відступи від країв сторінки */
-        }
-        h1 {
-            color: #ffcc00; /* Колір заголовку */
-        }
-        h2 {
-            color: #ccc; /* Колір підзаголовків */
-        }
-        ul {
-            list-style-type: none; /* Без маркерів списку */
-            padding: 0;
-        }
-        li {
-            background: #333; /* Темно-сірий фон для елементів списку */
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px; /* Закруглені кути */
-        }
-        li:hover {
-            background: #444; /* Зміна кольору фону при наведенні */
-        }
-    </style>
+    <title>Каталог Манги</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
 </head>
 <body>
-    <h1>Головна</h1>
-    <h2>Каталог
-        {{items}}
-    </h2>
+    <h1>Каталог Манги</h1>
     <ul>
         {% for item in items %}
-            <li>{{ item }}</li>
+            <li>
+                <a href="{% url 'indexManga' item.id %}">{{ item.title }}</a>
+            </li>
         {% endfor %}
     </ul>
 </body>
