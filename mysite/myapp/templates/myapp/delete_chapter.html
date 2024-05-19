@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="ml-[200px]">
+    <h1 class="text-2xl m-10 font-bold">Delete Chapter</h1>
+    <p>Are you sure you want to delete chapter "{{ chapter.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="block bg-red-600 text-white p-3 mt-4" type="submit">Delete</button>
+    </form>
+    <p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' chapter.id %}">Назад до глави</a></p>
+</div>
+{% endblock %}

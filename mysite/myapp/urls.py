@@ -3,10 +3,13 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('hello/', views.index, name='hello'),
-    path('hello/<int:manga_id>/', views.indexManga, name='helloManga'),
     path('manga/<int:manga_id>/', views.indexManga, name='indexManga'),
+    path('chapter/<int:id>/', views.chapter_detail, name='chapter_detail'),
     path('catalog/', views.catalog, name='catalog'),
-    path('chapter/<int:id>/', views.chapter_detail, name='chapter_detail'),  # Подання для перегляду окремих глав
-    #path('user_profile/', views.user_profile, name='user_profile'),  # Додано посилання на сторінку профілю користувача
+    path('addmanga/', views.add_manga, name='add_manga'),
+    path('manga/<int:manga_id>/addchapter/', views.add_chapter, name='addchapter'),
+    path('chapter/<int:chapter_id>/edit/', views.edit_chapter, name='editchapter'),
+    path('chapter/<int:chapter_id>/delete/', views.delete_chapter, name='deletechapter'),
+    path('manga/<int:manga_id>/edit/', views.edit_manga, name='editmanga'),
+    path('manga/<int:manga_id>/delete/', views.delete_manga, name='deletemanga'),
 ]

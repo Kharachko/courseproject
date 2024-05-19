@@ -9,13 +9,15 @@
 <div class="flex justify-between mt-4">
     {% if prev_chapter %}
     <a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' prev_chapter.id %}">Попередня глава</a>
-{% endif %}
+    {% endif %}
 
-{% if next_chapter %}
+    {% if next_chapter %}
     <a class="text-yellow-400 no-underline hover:underline" href="{% url 'chapter_detail' next_chapter.id %}">Наступна глава</a>
-{% endif %}
-
+    {% endif %}
 </div>
-<p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' chapter.manga.id %}">Назад до манги</a></p>
+<div class="mt-4">
+    <a class="text-blue-400 no-underline hover:underline" href="{% url 'editchapter' chapter.id %}">Редагувати главу</a>
+    <a class="text-red-400 no-underline hover:underline ml-4" href="{% url 'deletechapter' chapter.id %}">Видалити главу</a>
+</div>
+<p class="mt-4"><a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' chapter.manga.id %}">Назад до манги</a></p>
 {% endblock %}
-ф

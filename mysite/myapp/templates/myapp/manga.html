@@ -21,5 +21,10 @@
         </li>
     {% endfor %}
 </ul>
+<div class="flex justify-between mt-4">
+    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'addchapter' manga.id %}">Додати Главу</a>
+    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'editmanga' manga.id %}">Редагувати Мангу</a>
+    <a class="text-yellow-400 no-underline hover:underline" href="{% url 'deletemanga' manga.id %}">Видалити Мангу</a>
+</div>
 <p><a class="text-yellow-400 no-underline hover:underline" href="{% url 'index' %}">Назад до каталогу</a></p>
 {% endblock %}
