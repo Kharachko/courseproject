@@ -1,38 +1,28 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Каталог Манги</title>
-    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
-</head>
-<body class="bg-gray-950 text-white font-sans p-5">
-    <nav class="mb-6">
-        <div class="flex items-center">
-            <div class="flex-shrink-0">
-                <img class="h-8 w-8" src="{% static 'myapp/images/logo.jpg' %}" alt="Logo">
-            </div>
-        </div>
-    </nav>
-    <h1 class="text-yellow-400 text-3xl mb-4">Каталог Манги</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {% for item in items %}
-            <div class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
-                <a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' item.id %}">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <!-- Placeholder for future image -->
-                            <img class="h-24 w-24 rounded-lg object-cover" src="{% static 'myapp/images/placeholder.jpg' %}" alt="{{ item.title }}">
-                        </div>
-                        <div class="ml-4">
-                            <h2 class="text-lg font-bold">{{ item.title }}</h2>
-                            <p>Автор: {{ item.author }}</p>
-                            <p>Короткий опис: {{ item.description|truncatewords:20 }}</p>
-                        </div>
+{% extends 'myapp/base.html' %}
+
+{% block title %}Каталог Манги{% endblock %}
+
+{% block content %}
+<h1 class="text-yellow-400 text-3xl mb-4">Каталог Манги</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for item in items %}
+        <div class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
+            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'indexManga' item.id %}">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <!-- Display the image if it exists, otherwise display a placeholder -->
+                        {% if item.image_file %}
+                            <img class="h-32 w-32 rounded-lg object-cover" src="{{ item.image_file.url }}" alt="{{ item.title }}">
+                        {% endif %}
                     </div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
+                    <div class="ml-4">
+                        <h2 class="text-lg font-bold">{{ item.title }}</h2>
+                        <p>Автор: {{ item.author }}</p>
+                        <p>Короткий опис: {{ item.description|truncatewords:20 }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

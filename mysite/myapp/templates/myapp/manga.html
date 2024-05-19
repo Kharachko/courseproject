@@ -6,9 +6,9 @@
 <h1 class="text-yellow-400 text-3xl mb-4">{{ manga.title }}</h1>
 <div class="flex mb-4">
     <div class="mr-4">
-        <img class="h-48 w-32 rounded-lg object-cover" src="{{ manga.photo_url }}" alt="{{ manga.title }}">
+        <img class="max-h-64 max-w-48 shadow-lg rounded-lg object-cover" src="{{ manga.image_file.url }}" alt="{{ manga.title }}">
     </div>
-    <div>
+    <div class="manga-description max-w-max"> <!-- Додано клас для опису манги та обмеження ширини тексту -->
         <p>Автор: {{ manga.author }}</p>
         <p>{{ manga.description }}</p>
     </div>
