@@ -11,4 +11,7 @@ class MangaForm(forms.ModelForm):
 class ChapterForm(forms.ModelForm):
     class Meta:
         model = Chapter
-        fields = ['manga', 'number', 'title', 'pdf_file']
+        fields = ['number', 'title', 'pdf_file']
+        widgets = {
+            'manga': forms.HiddenInput(),
+        }

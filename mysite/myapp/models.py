@@ -17,7 +17,7 @@ class Chapter(models.Model):
     manga = models.ForeignKey(Manga, related_name='chapters', on_delete=models.CASCADE)
     number = models.IntegerField(default=1)
     title = models.CharField(max_length=200, default="Chapter Title")
-    pdf_file = models.FileField(upload_to='chapters/', default=None)
+    pdf_file = models.FileField(blank = True, upload_to='chapters/', default=None)
 
     def __str__(self):
         return f"Chapter {self.number}: {self.title}"

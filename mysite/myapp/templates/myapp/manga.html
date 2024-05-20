@@ -5,22 +5,28 @@
 {% block content %}
 <h1 class="text-yellow-400 text-3xl mb-4">{{ manga.title }}</h1>
 <div class="flex mb-4">
+    {% if manga.image_file %}
     <div class="mr-4">
         <img class="max-h-64 max-w-48 shadow-lg rounded-lg object-cover" src="{{ manga.image_file.url }}" alt="{{ manga.title }}">
     </div>
+    {% endif %}
     <div class="manga-description max-w-max"> <!-- Додано клас для опису манги та обмеження ширини тексту -->
         <p>Автор: {{ manga.author }}</p>
         <p>{{ manga.description }}</p>
     </div>
 </div>
 <h2 class="text-yellow-400 text-2xl mb-2">Глави</h2>
-<ul class="list-none p-0">
-    {% for chapter in chapters %}
-        <li class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
-            <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:chapter_detail' chapter.id %}">Chapter {{ chapter.number }}: {{ chapter.title }}</a>
-        </li>
-    {% endfor %}
-</ul>
+{% if chapters %}
+    <ul class="list-none p-0">
+        {% for chapter in chapters %}
+            <li class="bg-gray-800 hover:bg-gray-700 mb-2 p-3 rounded-lg">
+                <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:chapter_detail' chapter.id %}">Chapter {{ chapter.number }}: {{ chapter.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>У цієї манги немає глав.</p>
+{% endif %}
 <div class="flex justify-between mt-4">
     <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:addchapter' manga.id %}">Додати Главу</a>
     <a class="text-yellow-400 no-underline hover:underline" href="{% url 'myapp:editmanga' manga.id %}">Редагувати Мангу</a>

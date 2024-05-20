@@ -5,18 +5,35 @@
     <h1 class="text-2xl m-10 font-bold">Add New Chapter</h1>
     <form class="w-1/3" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {{ form.manga }}
         <div class="mb-4">
             <label class="block text-gray-700 text-md font-bold mb-2" for="number">Chapter Number</label>
-            <input class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="number" name="number" id="number" placeholder="Chapter Number...">
+            <input class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="number" name="number" id="number" placeholder="Chapter Number..." required>
             
             <label class="block text-gray-700 text-md font-bold mb-2 mt-2" for="title">Chapter Title</label>
-            <input class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="title" id="title" placeholder="Chapter Title...">
+            <input class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="title" id="title" placeholder="Chapter Title..." required>
             
             <label class="block text-gray-700 text-md font-bold mb-2 mt-2" for="pdf_file">Upload PDF</label>
-            <input class="block mt-4" type="file" accept=".pdf" name="pdf_file" id="pdf_file">
+            <input class="block mt-4" type="file" accept=".pdf" name="pdf_file" id="pdf_file" required>
+
+            {% if form.errors %}
+                <div class="text-red-500 mt-2">
+                    <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
             
             <button class="block bg-green-600 text-white p-3 mt-4" type="submit">Add Chapter</button>
+            <a href="{% url 'myapp:indexManga' manga.id %}" class="block bg-gray-400 text-white p-3 mt-2 text-center">Повернутися назад</a>
         </div>
     </form>
 </div>
-{% endblock content %}
+{% endblock %}

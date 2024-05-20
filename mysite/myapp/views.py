@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Manga, Chapter
 from .forms import MangaForm, ChapterForm
-
+import logging
+logger = logging.getLogger(__name__)
 
 def index(request):
     items = Manga.objects.all()
@@ -40,28 +41,10 @@ def add_manga(request):
         form = MangaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index') 
+            return redirect('myapp:index') 
     else:
         form = MangaForm()
     return render(request, 'myapp/addmanga.html', {'form': form})
-
-def edit_manga(request, manga_id):
-    manga = get_object_or_404(Manga, id=manga_id)
-    if request.method == 'POST':
-        form = MangaForm(request.POST, request.FILES, instance=manga)
-        if form.is_valid():
-            form.save()
-            return redirect('index')  # Повертаємося на головну сторінку після редагування
-    else:
-        form = MangaForm(instance=manga)
-    return render(request, 'myapp/edit_manga.html', {'form': form})
-
-def delete_manga(request, manga_id):
-    manga = get_object_or_404(Manga, id=manga_id)
-    if request.method == 'POST':
-        manga.delete()
-        return redirect('index')  # Повертаємося на головну сторінку після видалення
-    return render(request, 'myapp/delete_manga.html', {'manga': manga})
 
 def add_chapter(request, manga_id):
     manga = get_object_or_404(Manga, id=manga_id)
@@ -71,10 +54,30 @@ def add_chapter(request, manga_id):
             chapter = form.save(commit=False)
             chapter.manga = manga
             chapter.save()
-            return redirect('indexManga', manga_id=manga.id)
+            return redirect('myapp:indexManga', manga_id=manga.id)
+        else:
+            logger.error("Form errors: %s", form.errors)
     else:
-        form = ChapterForm()
+        form = ChapterForm(initial={'manga': manga})
     return render(request, 'myapp/add_chapter.html', {'form': form, 'manga': manga})
+
+def edit_manga(request, manga_id):
+    manga = get_object_or_404(Manga, id=manga_id)
+    if request.method == 'POST':
+        form = MangaForm(request.POST, request.FILES, instance=manga)
+        if form.is_valid():
+            form.save()
+            return redirect('myapp:index')  # Повертаємося на головну сторінку після редагування
+    else:
+        form = MangaForm(instance=manga)
+    return render(request, 'myapp/edit_manga.html', {'form': form})
+
+def delete_manga(request, manga_id):
+    manga = get_object_or_404(Manga, id=manga_id)
+    if request.method == 'POST':
+        manga.delete()
+        return redirect('myapp:index')  # Повертаємося на головну сторінку після видалення
+    return render(request, 'myapp/delete_manga.html', {'manga': manga})
 
 def edit_chapter(request, chapter_id):
     chapter = get_object_or_404(Chapter, id=chapter_id)
@@ -82,7 +85,7 @@ def edit_chapter(request, chapter_id):
         form = ChapterForm(request.POST, request.FILES, instance=chapter)
         if form.is_valid():
             form.save()
-            return redirect('chapter_detail', id=chapter.id)
+            return redirect('myapp:chapter_detail', id=chapter.id)
     else:
         form = ChapterForm(instance=chapter)
     return render(request, 'myapp/edit_chapter.html', {'form': form, 'chapter': chapter})
@@ -92,7 +95,7 @@ def delete_chapter(request, chapter_id):
     manga_id = chapter.manga.id
     if request.method == 'POST':
         chapter.delete()
-        return redirect('indexManga', manga_id=manga_id)
+        return redirect('myapp:indexManga', manga_id=manga_id)
     return render(request, 'myapp/delete_chapter.html', {'chapter': chapter})
 
 # def user_profile(request, username):

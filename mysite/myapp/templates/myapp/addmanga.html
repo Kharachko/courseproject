@@ -25,6 +25,10 @@
             <input class="block mt-4" type="file" accept="image/*" name="image_file" id="image_file">
             
             <button class="block bg-green-600 text-white p-3 mt-4" type="submit">Add Manga</button>
+            
+            <!-- Кнопка для повернення на сторінку манги -->
+            <a class="block bg-blue-600 text-white p-3 mt-4" href="{% url 'myapp:index' %}">Back to Manga Page</a>
+            
         </div>
     </form>
 </div>
